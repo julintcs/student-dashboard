@@ -11,7 +11,7 @@ It will install all the packages required (as specified in `package.json`). Take
 
 Start MongoDB server with the `mongod` command and after it starts, run
 
-`yarn start` from the root directory to run the server for production purposes.
+`yarn start` from the root directory to run the server for development purposes.
 
 Go to `http://localhost:3030/` to view the site.
 

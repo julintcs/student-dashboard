@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-
 const renderLogin = () => <NavLink className="bg-inverse text-white" tag={Link} to="/account/login">Log In</NavLink>;
 
 export default class Header extends React.Component {
@@ -46,7 +45,6 @@ export default class Header extends React.Component {
         <header className="App-header">
 				<Navbar light toggleable>
 					<NavbarToggler right onClick={this.toggleNavbar} />
-					<img src={logo} className="App-logo" alt="logo" />
 					<NavbarBrand className="bg-inverse text-white" tag={Link} to="/">Student dashboard</NavbarBrand>
 					<Collapse isOpen={this.state.isOpen} navbar>
 						<Nav className="ml-auto" navbar>
