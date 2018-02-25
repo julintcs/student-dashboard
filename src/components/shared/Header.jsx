@@ -1,0 +1,66 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+
+
+const renderLogin = () => <NavLink className="bg-inverse text-white" tag={Link} to="/account/login">Log In</NavLink>;
+
+export default class Header extends React.Component {
+	constructor(props) {
+		super(props);
+		
+		this.logOutClick = this.logOutClick.bind(this);
+		this.renderGreeting = this.renderGreeting.bind(this);
+		this.toggleNavbar = this.toggleNavbar.bind(this);
+		
+		this.state = {
+			isOpen: false,
+		};
+	}
+	
+	logOutClick(e) {
+		e.preventDefault();
+		const { logUserOut } = this.props;
+		logUserOut();
+	}
+	
+	renderGreeting(name) {
+		return (
+			<span>
+				Welcome, {name} | <a href="/logout" onClick={this.logOutClick}>Log out</a>
+			</span>
+		);
+	}
+	
+	toggleNavbar() {
+		this.setState({
+			isOpen: !this.state.isOpen,
+		});
+	}
+	
+	render() {
+		const { isLoggedIn, username } = this.props.authentication;
+		return (
+		
+      <div className="Header">
+        <header className="App-header">
+				<Navbar light toggleable>
+					<NavbarToggler right onClick={this.toggleNavbar} />
+					<img src={logo} className="App-logo" alt="logo" />
+					<NavbarBrand className="bg-inverse text-white" tag={Link} to="/">Student dashboard</NavbarBrand>
+					<Collapse isOpen={this.state.isOpen} navbar>
+						<Nav className="ml-auto" navbar>
+							<NavItem className="bg-inverse text-white">
+								{ isLoggedIn ? this.renderGreeting(username) : renderLogin() }
+							</NavItem>
+						</Nav>
+					</Collapse>
+				</Navbar>
+        </header>
+	  </div>
+			
+		);
+	}
+}
+
+
