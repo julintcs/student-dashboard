@@ -1,11 +1,11 @@
 require('babel-register');
+const firebase = require('firebase');
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session')({
@@ -26,9 +26,6 @@ const users = require('./routes/api/users');
 const authentication = require('./routes/api/authentication');
 
 const app = express();
-
-// connect to mongoose
-mongoose.connect('mongodb://localhost:27017/test');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

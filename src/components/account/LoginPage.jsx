@@ -31,6 +31,18 @@ export default class LoginPage extends React.Component {
 		const { loginFunction } = this.props;
 		const formData = this.state;
 		loginFunction(formData);
+		
+		
+    auth.doCreateUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(authUser => {
+        this.setState(() => ({ email: this.state.email, password: this.state.password }));
+      })
+      .catch(error => {
+        //this.setState(byPropKey('error', error));
+		// Error!
+      });
+
+    event.preventDefault();
 	}
 	
 	render() {
