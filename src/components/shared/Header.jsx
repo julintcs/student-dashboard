@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { auth } from '../../firebase';
+import firebase from 'firebase';
 
 const renderLogin = () => <NavLink className="bg-inverse text-white" tag={Link} to="/account/login">Log In</NavLink>;
 
@@ -20,7 +22,13 @@ export default class Header extends React.Component {
 	logOutClick(e) {
 		e.preventDefault();
 		const { logUserOut } = this.props;
-		logUserOut();
+		//logUserOut();
+		
+firebase.auth().signOut().then(function() {
+  // Sign-out successful.
+}).catch(function(error) {
+  // An error happened.
+});		
 	}
 	
 	renderGreeting(name) {
