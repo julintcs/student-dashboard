@@ -14,6 +14,7 @@ export default class LoginPage extends React.Component {
 		this.state = {
 			email: '',
 			password: '',
+			wrongcredentials: false,
 		};
 	}
 	
@@ -40,6 +41,7 @@ export default class LoginPage extends React.Component {
       .catch(error => {
         //this.setState(byPropKey('error', error));
 		// Error!
+		this.setState({ wrongcredentials: true} );
       });
 
     event.preventDefault();
@@ -74,6 +76,7 @@ export default class LoginPage extends React.Component {
 						</FormGroup>
 						<Button onClick={this.compileFormData}>Log in</Button>
 					</Form>
+					<h6>{this.state.wrongcredentials? "Wrong password" : ""}</h6>
 				</div>
 			</div>
 		);
