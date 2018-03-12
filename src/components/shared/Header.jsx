@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-import { auth } from '../../firebase';
 import firebase from 'firebase';
 
 const renderLogin = () => <NavLink className="bg-inverse text-white" tag={Link} to="/account/login">Log In</NavLink>;
@@ -47,6 +46,7 @@ firebase.auth().signOut().then(function() {
 	
 	render() {
 		const { isLoggedIn, username } = this.props.authentication;
+		userName = firebase.auth().currentUser;
 		return (
 		
       <div className="Header">
@@ -57,7 +57,7 @@ firebase.auth().signOut().then(function() {
 					<Collapse isOpen={this.state.isOpen} navbar>
 						<Nav className="ml-auto" navbar>
 							<NavItem className="bg-inverse text-white">
-								{ isLoggedIn ? this.renderGreeting(username) : renderLogin() }
+								{ userName!=NULL ? this.renderGreeting(userName) : renderLogin() }
 							</NavItem>
 						</Nav>
 					</Collapse>

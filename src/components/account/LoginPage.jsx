@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { auth } from '../../firebase';
 import firebase from 'firebase';
 
 export default class LoginPage extends React.Component {
@@ -36,9 +35,10 @@ export default class LoginPage extends React.Component {
 		//loginFunction(formData);
 		
 		
-		firebase.auth.signInWithEmailAndPassword(email, password)(this.state.email, this.state.password)
+		firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
 		.then(authUser => {
 			this.setState(() => ({ email: this.state.email, password: this.state.password, wrongcredentials: false }));
+			this.props.authentication.isLoggedIn = true;
 		})
 		.catch(error => {
 			//this.setState(byPropKey('error', error));
