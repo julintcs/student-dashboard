@@ -20,21 +20,6 @@ import TemplateContainer from './components/TemplateContainer';
 
 const Store = configureStore();
 
-import firebase from 'firebase';
-
-const config = {
-	apiKey: "AIzaSyAudYBAkgiC2bPN221TOTKpi-W3fHFimtg",
-	authDomain: "test-3d6d5.firebaseapp.com",
-	databaseURL: "https://test-3d6d5.firebaseio.com",
-	projectId: "test-3d6d5",
-	storageBucket: "test-3d6d5.appspot.com",
-	messagingSenderId: "955611539641"
-};
-
-if (!firebase.apps.length) {
-  firebase.initializeApp(config);
-}
-
 const renderApp = (Component) => {
 	render(
 	<AppContainer>
@@ -48,23 +33,6 @@ const renderApp = (Component) => {
 	document.querySelector('#react-app'),
 	);
 };
-
-firebase.auth().signOut().then(function() {
-  // Sign-out successful.
-}).catch(function(error) {
-  // An error happened.
-});
-
-/*
-firebase.auth().createUserWithEmailAndPassword("joseph@mail.com", "josephj").catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  console.log("error");
-  // ...
-});
-*/
-console.log(firebase.auth().currentUser);
 
 renderApp(TemplateContainer);
 
