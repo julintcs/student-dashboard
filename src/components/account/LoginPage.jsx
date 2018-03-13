@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import firebase from 'firebase';
-import { isLoggedIn } from '../../actions/isLoggedIn';
+import authen from '../../actions/isLoggedIn';
 
 
 export default class LoginPage extends React.Component {
@@ -41,7 +41,7 @@ export default class LoginPage extends React.Component {
 		.then(authUser => {
 			this.setState(() => ({ email: this.state.email, password: this.state.password, wrongcredentials: false }));
 			console.log("signed in");//+firebase.auth().currentUser.displayName);
-			this.isLoggedIn = true;
+			authen.isLoggedIn = true;
 		})
 		.catch(error => {
 			//this.setState(byPropKey('error', error));

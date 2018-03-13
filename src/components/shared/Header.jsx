@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
-import { auth } from '../../firebase';
 import firebase from 'firebase';
 
-import { isLoggedIn } from '../../actions/isLoggedIn';
+import authen from '../../actions/isLoggedIn';
 
 const renderLogin = () => <NavLink className="bg-inverse text-white" tag={Link} to="/account/login">Log In</NavLink>;
 
@@ -28,6 +27,7 @@ export default class Header extends React.Component {
 		
 firebase.auth().signOut().then(function() {
   // Sign-out successful.
+  authen.isLoggedIn = false;
 
 }).catch(function(error) {
   // An error happened.
@@ -60,7 +60,7 @@ firebase.auth().signOut().then(function() {
 					<Collapse isOpen={this.state.isOpen} navbar>
 						<Nav className="ml-auto" navbar>
 							<NavItem className="bg-inverse text-white">
-								{ isLoggedIn ? this.renderGreeting(this.state.email) : renderLogin() }
+								{ authen.isLoggedIn ? this.renderGreeting(this.state.email) : renderLogin() }
 							</NavItem>
 						</Nav>
 					</Collapse>

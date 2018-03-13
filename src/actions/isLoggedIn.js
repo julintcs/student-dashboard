@@ -1,1 +1,5 @@
-export var isLoggedIn = false;
+var authen = {
+	isLoggedIn: false,
+};
+
+export default authen;
