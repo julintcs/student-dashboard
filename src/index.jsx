@@ -6,6 +6,8 @@ import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 
+import firebase from 'firebase';
+
 // CSS from a module
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -33,6 +35,12 @@ const renderApp = (Component) => {
 	document.querySelector('#react-app'),
 	);
 };
+
+firebase.auth().signOut().then(function() {
+  console.log('Signed Out');
+}, function(error) {
+  console.error('Sign Out Error', error);
+});
 
 renderApp(TemplateContainer);
 
