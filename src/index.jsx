@@ -33,12 +33,6 @@ if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
 
-firebase.auth().signOut().then(function() {
-  console.log('Signed Out');
-}, function(error) {
-  console.error('Sign Out Error', error);
-});
-
 const Store = configureStore();
 
 const renderApp = (Component) => {
