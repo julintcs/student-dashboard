@@ -3,10 +3,10 @@ import { logger } from 'redux-logger';
 
 import DevTools from '../components/shared/DevTools';
 import AuthenticationReducer from '../reducers/authentication';
-import ProgressReducer from '../reducers/progress';
+//import ProgressReducer from '../reducers/progress';
 
 const combinedReducers = combineReducers({
-	progress: ProgressReducer,
+	//progress: ProgressReducer,
 	authentication: AuthenticationReducer,
 });
 
