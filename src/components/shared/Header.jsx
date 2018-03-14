@@ -17,6 +17,7 @@ export default class Header extends React.Component {
 		
 		this.state = {
 			isOpen: false,
+			isLoggedIn: false
 		};
 	}
 	
@@ -27,11 +28,24 @@ export default class Header extends React.Component {
 		
 firebase.auth().signOut().then(function() {
   // Sign-out successful.
-  authen.isLoggedIn = false;
 
 }).catch(function(error) {
   // An error happened.
 });		
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+	this.setState({
+		isLoggedIn: true
+	});
+  } else {
+    // No user is signed in.
+	this.setState({
+		isLoggedIn: false
+	});
+  }
+});
 	}
 	
 	renderGreeting(name) {
@@ -41,15 +55,16 @@ firebase.auth().signOut().then(function() {
 			</span>
 		);
 	}
-	
+
 	toggleNavbar() {
 		this.setState({
 			isOpen: !this.state.isOpen,
 		});
 	}
 	
+
+	
 	render() {
-		//const { isLoggedIn, username } = this.props.authentication;
 		return (
 		
       <div className="Header">
@@ -60,7 +75,9 @@ firebase.auth().signOut().then(function() {
 					<Collapse isOpen={this.state.isOpen} navbar>
 						<Nav className="ml-auto" navbar>
 							<NavItem className="bg-inverse text-white">
-								{ authen.isLoggedIn ? this.renderGreeting(this.state.email) : renderLogin() }
+							{ this.state.isLoggedIn ? "Yes" : "No" }
+								
+								
 							</NavItem>
 						</Nav>
 					</Collapse>
