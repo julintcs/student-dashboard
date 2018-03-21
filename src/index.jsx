@@ -6,6 +6,8 @@ import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { render } from 'react-dom';
 
+import firebase from 'firebase';
+
 // CSS from a module
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -17,6 +19,29 @@ import DevTools from './components/shared/DevTools';
 import configureStore from './store';
 
 import TemplateContainer from './components/TemplateContainer';
+
+// Initialize Firebase
+var config = {
+	apiKey: "AIzaSyAudYBAkgiC2bPN221TOTKpi-W3fHFimtg",
+	authDomain: "test-3d6d5.firebaseapp.com",
+	databaseURL: "https://test-3d6d5.firebaseio.com",
+	projectId: "test-3d6d5",
+	storageBucket: "test-3d6d5.appspot.com",
+	messagingSenderId: "955611539641"
+};
+if (!firebase.apps.length) {
+	firebase.initializeApp(config);
+}
+
+
+////////////// TO BE DELETED ////////////////////
+firebase.auth().signOut().then(function() {
+  console.log('Signed Out');
+}, function(error) {
+  console.error('Sign Out Error', error);
+});
+//////////////////////////////////////////////////
+
 
 const Store = configureStore();
 

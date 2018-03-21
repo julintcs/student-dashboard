@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import firebase from 'firebase';
+
 
 export default class LoginPage extends React.Component {
 	constructor(props) {
@@ -30,7 +32,18 @@ export default class LoginPage extends React.Component {
 	compileFormData() {
 		const { loginFunction } = this.props;
 		const formData = this.state;
-		loginFunction(formData);
+		//loginFunction(formData);
+		
+		firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+		.then(authUser => {
+			this.setState(() => ({ email: this.state.email, password: this.state.password, wrongcredentials: false }));
+
+			console.log("signed in");//+firebase.auth().currentUser.displayName);
+
+		})
+		.catch(error => {
+			this.setState({ wrongcredentials: true} );
+		});
 	}
 	
 	render() {
