@@ -25,7 +25,7 @@ After firebase is set up, do
 
 from the root directory of the project to run the server for development purposes.
 
-Go to `http://localhost:3000/` to view the site.
+Go to [`http://localhost:3000/`](http://localhost:3000/) to view the site.
 
 Sign-in is done via the email id and password.
 
