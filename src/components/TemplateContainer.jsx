@@ -19,6 +19,8 @@ class TemplateContainer extends React.Component {
 	
 	async checkSession() {
 		const { sessionCheckFailureAction, sessionCheckSuccessAction } = this.props;
+		
+		/*
 		// contact the API
 		await fetch(
 			// where to contact
@@ -45,6 +47,7 @@ class TemplateContainer extends React.Component {
 		.catch((error) => {
 			sessionCheckFailureAction(error);
 		});
+		*/
 	}
 	
 	render() {
