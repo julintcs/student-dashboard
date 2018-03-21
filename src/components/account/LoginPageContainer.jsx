@@ -1,6 +1,7 @@
 import React from 'react';
 import 'whatwg-fetch';
 import { Redirect } from 'react-router-dom';
+import firebase from 'firebase';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -38,6 +39,17 @@ export class LoginPageContainer extends React.Component {
 		loginAttemptAction();
 		
 		// contact login API
+		firebase.auth().signInWithEmailAndPassword(userData.email, userData.password)
+		.then(authUser => {
+			//this.setState(() => ({ email: this.state.email, password: this.state.password, wrongcredentials: false }));
+
+			console.log("signed in");
+			
+			loginSuccessAction();
+			this.setState({ redirect: true });
+		});
+
+/*
 		await fetch(
 			// where to contact
 			'/api/authentication/login',
@@ -68,6 +80,7 @@ export class LoginPageContainer extends React.Component {
 		.catch((error) => {
 			loginFailureAction(new Error(error));
 		});
+*/
 		
 		// turn off spinner
 		decrementProgressAction();
