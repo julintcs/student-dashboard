@@ -45,6 +45,16 @@ export default class LoginPage extends React.Component {
 			this.setState({ wrongcredentials: true} );
 		});
 	}
+
+/*
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+  } else {
+    // No user is signed in.
+  }
+});
+*/	
 	
 	render() {
 		return (
