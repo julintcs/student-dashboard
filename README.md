@@ -29,7 +29,7 @@ Go to `http://localhost:3000/` to view the site.
 
 Sign-in is done via the email id and password.
 
-I've sent invites to you to access the firebase database that I created. After accepting it, go to `console.firebase.google.com`.
+I've sent invites to you to access the firebase database that I created. After accepting it, go to [`console.firebase.google.com`](console.firebase.google.com).
 
 I followed a great series of video tutorials by Christopher Buecheler at [this](https://www.youtube.com/playlist?list=PL3Ld4LsLih54o7ElUTM6z8x48_HT0Ukc9) link. Maybe this will help you as well.
 
