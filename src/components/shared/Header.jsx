@@ -27,7 +27,7 @@ export default class Header extends React.Component {
 	renderGreeting(name) {
 		return (
 			<span>
-				Welcome, {name} | <a href="/logout" onClick={this.logOutClick}>Log out</a>
+				Welcome {name} | <a href="/logout" onClick={this.logOutClick}>Log out</a>
 			</span>
 		);
 	}
