@@ -47,40 +47,9 @@ export class LoginPageContainer extends React.Component {
 			
 			loginSuccessAction();
 			this.setState({ redirect: true });
+		}).catch(function(error){
+			console.log('sign in error');
 		});
-
-/*
-		await fetch(
-			// where to contact
-			'/api/authentication/login',
-			//what to send
-			{
-				method: 'POST',
-				body: JSON.stringify(userData),
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				credentials: 'same-origin',
-			},
-		)
-		.then((response) => {
-			if (response.status === 200) {
-				return response.json();
-			}
-			return null;
-		})
-		.then((json) => {
-			if (json) {
-				loginSuccessAction(json);
-				this.setState({ redirect: true });
-			} else {
-				loginFailureAction(new Error('Authentication Failed'));
-			}
-		})
-		.catch((error) => {
-			loginFailureAction(new Error(error));
-		});
-*/
 		
 		// turn off spinner
 		decrementProgressAction();

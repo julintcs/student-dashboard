@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { incrementProgress, decrementProgress } from '../../actions/progress';
 import { logoutFailure, logoutSuccess } from '../../actions/authentication';
+import firebase from 'firebase';
 
 import Header from './Header';
 
@@ -25,6 +26,15 @@ class HeaderContainer extends React.Component {
 		incrementProgressAction();
 		
 		// contact the API
+		firebase.auth().signOut().then(function() {
+		  console.log('Signed Out');
+		  logoutSuccessAction();
+		}, function(error) {
+		  console.error('Sign Out Error', error);
+		  logoutFailureAction();
+		});		
+		
+/*
 		await fetch(
 			// where to contact
 			'/api/authentication/logout',
@@ -43,7 +53,8 @@ class HeaderContainer extends React.Component {
 		.catch((error) => {
 			logoutFailureAction(error);
 		});
-		
+*/		
+
 		// turn off spinner
 		decrementProgressAction();
 	}

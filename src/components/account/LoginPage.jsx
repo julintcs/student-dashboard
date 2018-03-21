@@ -37,16 +37,6 @@ export default class LoginPage extends React.Component {
 
 	}
 
-/*
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-  } else {
-    // No user is signed in.
-  }
-});
-*/	
-	
 	render() {
 		return (
 			<div className="loginpage row justify-content-center">

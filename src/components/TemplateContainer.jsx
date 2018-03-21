@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Template from './Template';
 import { sessionCheckFailure, sessionCheckSuccess } from '../actions/authentication';
+import firebase from 'firebase';
 
 class TemplateContainer extends React.Component {
 	constructor(props) {
@@ -20,6 +21,16 @@ class TemplateContainer extends React.Component {
 	async checkSession() {
 		const { sessionCheckFailureAction, sessionCheckSuccessAction } = this.props;
 		
+		firebase.auth().onAuthStateChanged(function(user) {
+		  if (user) {
+			// User is signed in.
+			sessionCheckSuccessAction();
+		  }
+		  else
+		  {
+			sessionCheckFailureAction();
+		  }
+		});
 		/*
 		// contact the API
 		await fetch(
